@@ -1,17 +1,22 @@
 from flask import Flask, request, jsonify, send_from_directory
 import mysql.connector
 from datetime import datetime, timedelta
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # Cargar las variables desde .env
 
 app = Flask(__name__)  # Mantén solo una instancia de app
 
 # Configuración de la conexión a MySQL
 def get_db_connection():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="Puma2020!",  # Cambiar a tu contraseña
-        database="DEMEX"
+        host=os.getenv('DB_HOST'),        # Desde el archivo .env
+        user=os.getenv('DB_USER'),        # Desde el archivo .env
+        password=os.getenv('DB_PASSWORD'),# Desde el archivo .env
+        database=os.getenv('DB_NAME')     # Desde el archivo .env
     )
+
 
 # Ruta para añadir un nuevo proyecto
 @app.route('/proyectos', methods=['POST'])
@@ -653,4 +658,8 @@ def index():
     return send_from_directory('.', 'index.html')
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    import os
+    port = int(os.getenv('PORT', 5000))  # Obtén el puerto desde la variable de entorno, usa 5000 como predeterminado
+    debug = os.getenv('FLASK_ENV') == 'development'  # Habilita debug si el entorno es desarrollo
+    app.run(host='0.0.0.0', port=port, debug=debug)
+
