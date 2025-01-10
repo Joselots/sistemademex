@@ -1,6 +1,5 @@
 packaging==24.2
 pycairo==1.27.0
-PyGObject==3.50.0
 wheel==0.45.1
 Flask==2.3.2
 mysql-connector-python==8.0.33
