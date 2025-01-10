@@ -659,7 +659,6 @@ def index():
 
 if __name__ == '__main__':
     import os
-    port = int(os.getenv('PORT', 5000))  # Obtén el puerto desde la variable de entorno, usa 5000 como predeterminado
-    debug = os.getenv('FLASK_ENV') == 'development'  # Habilita debug si el entorno es desarrollo
-    app.run(host='0.0.0.0', port=port, debug=debug)
-
+    port = int(os.getenv('PORT', 5000))  # Usa el puerto especificado en la variable de entorno
+    debug = os.getenv('FLASK_ENV') == 'development'  # Activa debug en desarrollo
+    app.run(host='0.0.0.0', port=port, debug=debug)  # Escucha en todas las interfaces
