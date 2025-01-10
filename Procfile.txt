@@ -1,0 +1,1 @@
+﻿web: pip3 app.py

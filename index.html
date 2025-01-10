@@ -1,0 +1,2057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos DEMEX</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <style>
+
+
+
+body.dark-mode {
+    background-color: #1b273b;
+    color: #f5c400;
+}
+
+body.dark-mode button {
+    background-color: #036ae8;
+    color: #ffffff;
+    border: 1px solid #444444;
+}
+
+body.dark-mode button:hover {
+    background-color: #003cff;
+}
+
+body.dark-mode table {
+    background-color: #036ae8;
+    border: 1px solid #444444;
+}
+
+body.dark-mode table th,
+body.dark-mode table td {
+    color: #ffffff;
+    border: 1px solid #444444;
+}
+
+body.dark-mode table tr:nth-child(even) {
+    background-color: #036ae8;
+}
+
+body.dark-mode table tr:hover {
+    background-color: #333333;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+    color: #ffffff;
+}
+
+body.dark-mode input {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border: 1px solid #444444;
+}
+
+body.dark-mode input::placeholder {
+    color: #888888;
+}
+
+body.dark-mode label {
+    color: #ffffff;
+}
+
+body.dark-mode .modal-content {
+    background-color: #04162c;
+    color: #ffffff;
+    border: 1px solid #444444;
+}
+
+body.dark-mode .close {
+    color: #ffffff;
+}
+
+body.dark-mode form {
+    background-color: #1e2f43; /* Fondo oscuro */
+    color: #ffffff; /* Texto blanco */
+    border: 1px solid #444444; /* Borde oscuro */
+}
+
+body.dark-mode form input {
+    background-color: #0f3666; /* Fondo de los campos */
+    color: #ffffff; /* Texto blanco */
+    border: 1px solid #444444; /* Borde oscuro */
+}
+
+body.dark-mode form button {
+    background-color: #0179f0; /* Fondo oscuro del botón */
+    color: #ffffff; /* Texto blanco */
+    border: 1px solid #555555; /* Borde oscuro */
+}
+
+body.dark-mode form button:hover {
+    background-color: #06172c; /* Fondo más oscuro al pasar el mouse */
+}
+
+body.dark-mode table.extended-table {
+    background-color: #072258; /* Fondo oscuro */
+    color: #ffffff; /* Texto blanco */
+    border: 1px solid #444444; /* Bordes oscuros */
+}
+
+body.dark-mode table.extended-table th,
+body.dark-mode table.extended-table td {
+    background-color: #0f3da1; /* Fondo de celdas */
+    color: #ffffff; /* Texto blanco */
+    border: 1px solid #444444; /* Bordes */
+}
+
+body.dark-mode table.extended-table tr:nth-child(even) {
+    background-color: #0f3da1; /* Fondo alterno */
+}
+
+body.dark-mode table.extended-table tr:hover {
+    background-color: #0f3da1; /* Fondo al pasar el mouse */
+}
+
+body.dark-mode table {
+    background-color: #0f3da1; /* Fondo oscuro */
+    color: #ffffff; /* Texto blanco */
+    border: 1px solid #444444; /* Bordes oscuros */
+}
+
+body.dark-mode table th,
+body.dark-mode table td {
+    background-color: rgb(12, 40, 80); /* Fondo de celdas */
+    color: #ffffff; /* Texto blanco */
+    border: 1px solid #444444; /* Bordes */
+}
+
+body.dark-mode table tr:nth-child(even) {
+    background-color: #2a2a2a; /* Fondo alterno */
+}
+
+body.dark-mode table tr:hover {
+    background-color: #333333; /* Fondo al pasar el mouse */
+}
+nav.dark-mode {
+    background-color: #0b68f4;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar General */
+/* Estilos básicos del navbar */
+nav {
+    background-color: #042140; /* Fondo azul */
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo de la lista */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid; /* Usar diseño de cuadrícula para la opción 3 */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Ajusta las columnas dinámicamente */
+    gap: 0px;
+    display: flex;
+    justify-content: space-evenly; 
+    justify-items: left; /* Centrar los elementos */
+}
+
+/* Elementos de la lista */
+nav ul li {
+    margin: 0;
+    text-align: center;
+}
+
+/* Enlaces del menú */
+nav ul li a {
+    color: white; /* Texto blanco */
+    text-decoration: none;
+    font-size: 10px; /* Fuente más pequeña */
+    font-weight: bold; /* Texto en negritas */
+    padding: 8px 12px;
+    border-radius: 5px; /* Azul más oscuro para el fondo del enlace */
+    transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+}
+
+/* Hover en los enlaces */
+nav ul li a:hover {
+    background-color: #003d80; /* Azul más oscuro al pasar el mouse */
+    transform: scale(1.05); /* Efecto de zoom */
+}
+
+.navbar button {
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+    nav ul {
+        grid-template-columns: 1fr; /* Una columna para pantallas pequeñas */
+    }
+
+    nav ul li a {
+        font-size: 12px; /* Fuente más pequeña en pantallas pequeñas */
+        padding: 10px; /* Más espacio alrededor */
+    }
+}
+
+
+
+#modo-oscuro-toggle {
+    position: fixed; /* Fija el botón en la pantalla */
+    bottom: 20px; /* Distancia desde la parte inferior */
+    right: 20px; /* Distancia desde la parte derecha */
+    background-color: #061f3a; /* Azul */
+    color: white; /* Texto blanco */
+    border: none;
+    border-radius: 50%; /* Botón redondeado */
+    width: 50px;
+    height: 50px;
+    font-size: 20px; /* Tamaño del ícono */
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra */
+    transition: background-color 0.3s, transform 0.2s; /* Efectos suaves */
+}
+
+#modo-oscuro-toggle:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
+    transform: scale(1.1); /* Pequeño efecto de zoom */
+}
+
+@media (max-width: 768px) {
+    #modo-oscuro-toggle {
+        width: 40px; /* Tamaño más pequeño en pantallas pequeñas */
+        height: 40px;
+        font-size: 16px;
+    }
+}
+
+
+/* Estilo General */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #edf2f3;
+    color: #001E80;
+}
+
+h1, h2 {
+    color: #001E80;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.container {
+    display: none;
+    padding: 20px;
+}
+
+.container.active {
+    display: block;
+}
+button {
+    background-color: #0d407e; /* Azul principal */
+    color: #fff; /* Texto blanco */
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #053061; /* Azul más oscuro */
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+
+/* Botones */
+.button-container {
+    margin: 20px;
+    text-align: center;
+}
+
+.button-container button {
+    background-color: #083a6e;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 10px;
+}
+
+.button-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Formularios */
+form {
+    margin: 0 auto;
+    max-width: 800px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.form-grid label {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.form-grid input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+form button {
+    background-color: #074588;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+form button:hover {
+    background-color: #053262;
+}
+
+/* Tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #ffffff; /* Fondo blanco */
+    color: #001E80; /* Texto oscuro */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombras */
+}
+
+table thead {
+    background-color: #022146; /* Azul principal */
+    color: #ffffff; /* Texto blanco */
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #012956; /* Bordes azul oscuro */
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+tbody tr:nth-child(even) {
+    background-color: #94b6f1; /* Fondo suave */
+}
+
+tbody tr:hover {
+    background-color: #B9E9FF; /* Hover */
+}
+
+.action-buttons button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.action-buttons .delete {
+    background-color: #FF0000;
+    color: white;
+    border: none;
+}
+
+.action-buttons .delete:hover {
+    background-color: #CC0000;
+}
+
+.action-buttons .edit {
+    background-color: #052a52;
+    color: white;
+    border: none;
+}
+
+.action-buttons .edit:hover {
+    background-color: #052f5b;
+}
+
+/* Modales */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+}
+
+.modal-content canvas {
+    margin: 20px auto;
+    display: block;
+}
+
+.modal .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 25px;
+    cursor: pointer;
+    color: red;
+}
+
+.modal .back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #094484;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.modal .back-button:hover {
+    background-color: #093463;
+}
+
+/* Estilos para Recopilación de Proyectos */
+#recopilacion table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 16px;
+}
+
+#recopilacion table thead {
+    background-color: #032a54;
+    color: white;
+    font-weight: bold;
+}
+
+#recopilacion table th, #recopilacion table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+#recopilacion table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#recopilacion table tr:hover {
+    background-color: #e6f7ff;
+}
+
+#recopilacion input {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#recopilacion button {
+    display: block;
+    margin: 10px auto;
+    background-color: #063261;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#recopilacion button:hover {
+    background-color: #0056b3;
+}
+
+#analisis-producto table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#analisis-producto table thead {
+    background-color: #07376a;
+    color: white;
+}
+
+#analisis-producto table th, #analisis-producto table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+#analisis-producto table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#analisis-producto table tr:hover {
+    background-color: #f1f1f1;
+
+
+
+}
+
+#wrapper-costos {
+    display: flex;
+    flex-direction: column; /* Mostrar uno debajo del otro */
+    max-height: 90vh;
+    overflow-y: auto; /* Añadir scroll si es necesario */
+}
+
+input, select {
+    width: 95%;
+    padding: 5px;
+    margin: 10px 0;
+    border: 1px solid #006AE4;
+    border-radius: 5px;
+    font-size: 12px;
+    background-color: #ffffff;
+    color: #001E80; /* Texto */
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #1479F5;
+    box-shadow: 0 0 5px rgba(20, 121, 245, 0.5);
+    outline: none;
+}
+
+.input-small {
+    width: 120px;
+    height: 25px;
+    padding: 5px;
+    font-size: 12px;
+}
+
+
+    </style>
+    <script>
+
+
+function toggleMenu() {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.toggle('hidden');
+}
+    function showSection(sectionId) {
+    // Oculta todas las secciones
+    document.querySelectorAll('.container').forEach(container => {
+        container.classList.remove('active');
+        container.style.display = 'none';
+    });
+
+    // Muestra la sección seleccionada
+    const section = document.getElementById(sectionId);
+    if (section) {
+        section.style.display = 'block';
+        section.classList.add('active');
+    }
+}
+let chartInstance; // Variable global para la instancia del gráfico
+
+function generarGraficoRendimiento(nombre, years, rendimientos, efectividad) {
+    // Crear un contenedor modal para el gráfico si no existe
+    let modal = document.getElementById('grafico-modal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'grafico-modal';
+        modal.className = 'modal';
+        modal.style.display = 'none';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <button class="back-button" onclick="cerrarModal()">← Regresar</button>
+                <h2 id="grafico-titulo">Rendimiento de Trabajador</h2>
+                <canvas id="grafica-rendimiento-trabajador"></canvas>
+                <p id="efectividad"></p>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+
+    // Actualiza el título del gráfico y la efectividad
+    const titulo = document.getElementById('grafico-titulo');
+    titulo.textContent = `Rendimiento de ${nombre}.`;
+    document.getElementById('efectividad').textContent = `Porcentaje de Efectividad: ${efectividad}%`;
+
+    // Mostrar el modal
+    modal.style.display = 'flex';
+
+    // Destruye el gráfico anterior si existe
+    if (chartInstance) {
+        chartInstance.destroy();
+    }
+
+    // Generar el nuevo gráfico
+    const ctx = document.getElementById('grafica-rendimiento-trabajador').getContext('2d');
+    chartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: years,
+            datasets: [{
+                label: `Rendimiento de ${nombre} (m2/día)`,
+                data: rendimientos,
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderWidth: 2,
+                tension: 0.3,
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Año'
+                    },
+                    ticks: {
+                        maxTicksLimit: 5 // Limita el número de años visibles
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Rendimiento (m2/día)'
+                    }
+                }
+            }
+        }
+    });
+}
+
+
+
+function cerrarModal() {
+    const modal = document.getElementById('grafico-modal');
+    modal.style.display = 'none';
+}
+
+function exportarExcel() {
+    const tabla = document.getElementById('tabla-proyectos');
+    const workbook = XLSX.utils.table_to_book(tabla, { sheet: "Proyectos" });
+    XLSX.writeFile(workbook, "proyectos.xlsx");
+}
+
+function alternarModoOscuro() {
+    document.body.classList.toggle('dark-mode');
+}
+
+
+async function agregarProyecto() {
+    const proyecto = {
+        Year: 2025,
+        Tipo: document.getElementById('tipo').value,
+        Proyecto: document.getElementById('proyecto').value,
+        Mes: document.getElementById('mes').value,
+        M2: parseFloat(document.getElementById('m2').value),
+        Inicio: document.getElementById('inicio').value,
+        Fin: document.getElementById('fin').value,
+        Analista: document.getElementById('analista').value,
+        Dibujante: document.getElementById('dibujante').value,
+        MC: parseInt(document.getElementById('mc').value),
+        Planos: parseInt(document.getElementById('planos').value),
+    };
+
+    try {
+        const response = await fetch('http://127.0.0.1:5000/proyectos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(proyecto),
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            alert(`Proyecto añadido exitosamente con ID: ${data.id}`);
+            obtenerProyectos();
+            showSection('pantalla-inicio');
+        } else {
+            const error = await response.json();
+            alert(`Error al añadir el proyecto: ${error.error}`);
+        }
+    } catch (error) {
+        console.error('Error al añadir proyecto:', error);
+        alert('No se pudo añadir el proyecto. Revisa la consola para más detalles.');
+    }
+}
+
+
+async function obtenerProyectos() {
+    try {
+        const response = await fetch('http://127.0.0.1:5000/proyectos');
+        if (!response.ok) {
+            throw new Error(`Error en la respuesta: ${response.status}`);
+        }
+        const proyectos = await response.json();
+        const tabla = document.getElementById('tabla-proyectos');
+        tabla.innerHTML = '';
+        proyectos.forEach(proyecto => {
+            // Formatear los valores como porcentajes
+            const pMC = (proyecto.pMC * 100).toFixed(2) + '%';
+            const pPlanos = (proyecto.pPlanos * 100).toFixed(2) + '%';
+            const pTotal = (proyecto.pTotal * 100).toFixed(2) + '%';
+
+            const fila = `
+                <tr>
+                    <td>${proyecto.ID}</td>
+                    <td>${proyecto.Year}</td>
+                    <td>${proyecto.Tipo}</td>
+                    <td>${proyecto.Proyecto}</td>
+                    <td>${proyecto.Mes}</td>
+                    <td>${proyecto.M2}</td>
+                    <td>${proyecto.Inicio}</td>
+                    <td>${proyecto.Fin}</td>
+                    <td>${proyecto.Dias}</td>
+                    <td>${proyecto.Analista}</td>
+                    <td>${proyecto.Dibujante}</td>
+                    <td>${proyecto.ND}</td>
+                    <td>${proyecto.MC}</td>
+                    <td>${proyecto.Planos}</td>
+                    <td>${proyecto.Costo_MC}</td>
+                    <td>${proyecto.Costo_Planos}</td>
+                    <td>${pMC}</td> <!-- Mostrar como porcentaje -->
+                    <td>${pPlanos}</td> <!-- Mostrar como porcentaje -->
+                    <td>${pTotal}</td> <!-- Mostrar como porcentaje -->
+                    <td class="action-buttons">
+                        <button class="delete" onclick="eliminarProyecto(${proyecto.ID})">Eliminar</button>
+                        <button class="edit" onclick="mostrarFormularioEditar(${proyecto.ID}, ${JSON.stringify(proyecto)})">Editar</button>
+                    </td>
+                </tr>
+            `;
+            tabla.innerHTML += fila;
+        });
+    } catch (error) {
+        console.error('Error al obtener proyectos:', error);
+        alert('No se pudieron cargar los proyectos. Revisa la consola para más detalles.');
+    }
+}
+
+
+        async function eliminarProyecto(id) {
+            if (confirm('¿Estás seguro de que deseas eliminar este proyecto?')) {
+                try {
+                    const response = await fetch(`http://127.0.0.1:5000/proyectos/${id}`, {
+                        method: 'DELETE',
+                    });
+                    if (response.ok) {
+                        alert('Proyecto eliminado exitosamente');
+                        obtenerProyectos();
+                        
+                    } else {
+                        alert('Error al eliminar el proyecto');
+                    }
+                } catch (error) {
+                    console.error('Error al eliminar proyecto:', error);
+                }
+            }
+        }
+        function filtrarProyectos() {
+    const filtro = document.getElementById('busqueda').value.toLowerCase();
+    const filas = document.querySelectorAll('#tabla-proyectos tr');
+
+    filas.forEach(fila => {
+        const celdas = fila.querySelectorAll('td');
+        const texto = Array.from(celdas).map(celda => celda.textContent.toLowerCase()).join(' ');
+        fila.style.display = texto.includes(filtro) ? '' : 'none';
+    });
+}
+
+        function mostrarFormularioEditar(id, proyecto) {
+            showSection('formulario-editar');
+            document.getElementById('id-editar').value = id;
+            document.getElementById('tipo-editar').value = proyecto.Tipo;
+            document.getElementById('proyecto-editar').value = proyecto.Proyecto;
+            document.getElementById('mes-editar').value = proyecto.Mes;
+            document.getElementById('m2-editar').value = proyecto.M2;
+            document.getElementById('inicio-editar').value = proyecto.Inicio;
+            document.getElementById('fin-editar').value = proyecto.Fin;
+            document.getElementById('analista-editar').value = proyecto.Analista;
+            document.getElementById('dibujante-editar').value = proyecto.Dibujante;
+            document.getElementById('mc-editar').value = proyecto.MC;
+            document.getElementById('planos-editar').value = proyecto.Planos;
+        }
+
+        async function editarProyecto() {
+            const id = document.getElementById('id-editar').value;
+            const proyecto = {
+                Year: 2025,
+                Tipo: document.getElementById('tipo-editar').value,
+                Proyecto: document.getElementById('proyecto-editar').value,
+                Mes: document.getElementById('mes-editar').value,
+                M2: parseFloat(document.getElementById('m2-editar').value),
+                Inicio: document.getElementById('inicio-editar').value,
+                Fin: document.getElementById('fin-editar').value,
+                Analista: document.getElementById('analista-editar').value,
+                Dibujante: document.getElementById('dibujante-editar').value,
+                MC: parseInt(document.getElementById('mc-editar').value),
+                Planos: parseInt(document.getElementById('planos-editar').value),
+            };
+
+            try {
+                const response = await fetch(`http://127.0.0.1:5000/proyectos/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(proyecto),
+                });
+                if (response.ok) {
+                    alert('Proyecto actualizado exitosamente');
+                    obtenerProyectos();
+                    showSection('inicio');
+                } else {
+                    alert('Error al actualizar el proyecto');
+                }
+            } catch (error) {
+                console.error('Error al actualizar proyecto:', error);
+            }
+        }
+        async function cargarRendimiento() {
+    try {
+        const response = await fetch('http://127.0.0.1:5000/rendimiento');
+        if (!response.ok) {
+            throw new Error(`Error en la respuesta: ${response.status}`);
+        }
+
+        const datos = await response.json();
+
+        const trabajadores = datos.map(d => d.trabajador);
+        const maximos = datos.map(d => d.maximo);
+        const minimos = datos.map(d => d.minimo);
+        const promedios = datos.map(d => d.promedio);
+
+        const ctx = document.getElementById('grafica-rendimiento').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: trabajadores,
+                datasets: [
+                    { label: 'Máximo (m2/día)', data: maximos, backgroundColor: 'rgba(75, 192, 192, 0.6)' },
+                    { label: 'Promedio (m2/día)', data: promedios, backgroundColor: 'rgba(54, 162, 235, 0.6)' },
+                    { label: 'Mínimo (m2/día)', data: minimos, backgroundColor: 'rgba(255, 99, 132, 0.6)' }
+                ]
+            },
+            options: {
+                onClick: async (event, elements) => {
+                    if (elements.length > 0) {
+                        const index = elements[0].index;
+                        const trabajador = trabajadores[index];
+                        mostrarDetalleTrabajador(trabajador);
+                    }
+                }
+            }
+        });
+    } catch (error) {
+        console.error('Error al cargar el rendimiento:', error);
+        alert('No se pudo cargar el análisis de rendimiento. Revisa la consola para más detalles.');
+    }
+}
+
+async function mostrarDetalleTrabajador(nombre) {
+    try {
+        const response = await fetch(`http://127.0.0.1:5000/trabajador/${encodeURIComponent(nombre)}`);
+        if (!response.ok) {
+            throw new Error(`Error en la respuesta: ${response.status}`);
+        }
+
+        const proyectos = await response.json();
+        const tabla = document.getElementById('tabla-detalle');
+        const titulo = document.getElementById('titulo-trabajador');
+
+        // Actualizar el título
+        titulo.textContent = `Detalle del Trabajador: ${nombre}`;
+
+        // Limpiar tabla
+        tabla.innerHTML = '';
+
+        // Añadir filas a la tabla
+        proyectos.forEach(proyecto => {
+            const fila = `
+                <tr>
+                    <td>${proyecto.ID}</td>
+                    <td>${proyecto.Proyecto}</td>
+                    <td>${proyecto.Dias}</td>
+                    <td>${proyecto.M2}</td>
+                    <td>${proyecto.Rendimiento.toFixed(2)}</td>
+                </tr>
+            `;
+            tabla.innerHTML += fila;
+        });
+
+        // Mostrar la ventana flotante
+        document.getElementById('detalle-trabajador').style.display = 'flex';
+    } catch (error) {
+        console.error('Error al cargar detalles del trabajador:', error);
+        alert('No se pudieron cargar los detalles del trabajador.');
+    }
+}
+function cerrarDetalle() {
+    document.getElementById('detalle-trabajador').style.display = 'none';
+}
+async function buscarProyectos() {
+    const nombre = document.getElementById('nombre-trabajador').value.trim();
+    if (!nombre) {
+        alert('Por favor, escribe el nombre del trabajador.');
+        return;
+    }
+
+    try {
+        const response = await fetch(`http://127.0.0.1:5000/trabajador/${encodeURIComponent(nombre)}`);
+        if (!response.ok) {
+            throw new Error(`Error en la respuesta: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const proyectos = data.proyectos;
+        const stats = data.estadisticas;
+        const minimoRendimiento = data.minimo_rendimiento;
+
+        const totalProyectos = proyectos.length;
+        const proyectosEfectivos = proyectos.filter(proyecto => proyecto.supera_minimo).length;
+        const porcentajeEfectividad = totalProyectos > 0 ? (proyectosEfectivos / totalProyectos) * 100 : 0;
+
+        // Actualizar la tabla
+        const tabla = document.getElementById('tabla-recopilacion');
+        tabla.innerHTML = '';
+
+        if (proyectos.length === 0) {
+            tabla.innerHTML = '<tr><td colspan="6">No se encontraron proyectos para este trabajador.</td></tr>';
+            return;
+        }
+
+        const years = [];
+        const rendimientos = [];
+
+        proyectos.forEach(proyecto => {
+            const rendimiento = parseFloat(proyecto.Rendimiento) || 0;
+            years.push(proyecto.Year);
+            rendimientos.push(rendimiento);
+
+            const fila = `
+                <tr>
+                    <td>${proyecto.ID}</td>
+                    <td>${proyecto.Proyecto}</td>
+                    <td>${proyecto.Dias}</td>
+                    <td>${proyecto.M2}</td>
+                    <td>${rendimiento.toFixed(2)}</td>
+                    <td>${proyecto.cumple_minimo ? '✔️' : '❌'}</td>
+                </tr>
+            `;
+            tabla.innerHTML += fila;
+        });
+
+        // Mostrar el porcentaje de efectividad
+        const efectividadElemento = document.getElementById('porcentaje-efectividad');
+        efectividadElemento.textContent = `${porcentajeEfectividad.toFixed(2)}%`;
+        // Añadir estadísticas
+        tabla.innerHTML += `
+            <tr>
+                <td colspan="5" style="text-align: center;">
+                    <strong>Máximo Rendimiento:</strong> ${stats.maximo.toFixed(2)} m2/día<br>
+                    <strong>Mínimo Rendimiento:</strong> ${stats.minimo.toFixed(2)} m2/día<br>
+                    <strong>Promedio Rendimiento:</strong> ${stats.promedio.toFixed(2)} m2/día<br>
+                    <strong>Efectividad:</strong> ${stats.efectividad.toFixed(2)}% (${stats.proyectos_efectivos} de ${stats.total_proyectos} proyectos efectivos)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" style="text-align: center;">
+                    <button onclick="generarGraficoRendimiento('${nombre}', ${JSON.stringify(years)}, ${JSON.stringify(rendimientos)}, ${stats.efectividad.toFixed(2)})">
+                        Generar Gráfico de Rendimiento
+                    </button>
+                </td>
+            </tr>
+        `;
+    } catch (error) {
+        console.error('Error al buscar proyectos:', error);
+        alert('No se pudieron cargar los proyectos. Revisa la consola para más detalles.');
+    }
+}
+
+async function generarReporte() {
+    try {
+        const response = await fetch('http://127.0.0.1:5000/reporte');
+        const resumen = await response.json();
+
+        document.getElementById('reporte-detalle').innerHTML = `
+            <strong>Total de Proyectos:</strong> ${resumen.total_proyectos}<br>
+            <strong>Promedio M2:</strong> ${resumen.promedio_m2.toFixed(2)}<br>
+            <strong>Promedio Días:</strong> ${resumen.promedio_dias.toFixed(2)}
+        `;
+        document.getElementById('reporte').style.display = 'block';
+    } catch (error) {
+        console.error('Error al generar reporte:', error);
+        alert('No se pudo generar el reporte.');
+    }
+}
+
+async function cargarAnalisisProducto() {
+    try {
+        const response = await fetch('http://127.0.0.1:5000/analisis-producto');
+        if (!response.ok) {
+            throw new Error(`Error en la respuesta: ${response.status}`);
+        }
+
+        const productos = await response.json();
+        console.log("Datos recibidos:", productos); // Verifica los datos
+        const tabla = document.getElementById('tabla-analisis-producto');
+        tabla.innerHTML = '';
+
+        productos.forEach(producto => {
+            const m2 = parseFloat(producto.M2) || 0; // Asegura que sea un número
+            const mc = parseFloat(producto.MC) || 0; // Convierte MC a número
+            const pagPorM2 = parseFloat(producto.Pag_por_M2) || 0;
+            const costoMCporM2 = parseFloat(producto.Costo_MC_por_M2) || 0;
+            const planos = parseFloat(producto.Planos) || 0;
+            const planosPorM2 = parseFloat(producto.Planos_por_M2) || 0;
+            const costoPlanos = parseFloat(producto.Costo_Planos) || 0;
+            const porcentajeMC = parseInt(producto.Porcentaje_MC) || 0;
+            const porcentajePlanos = parseInt(producto.Porcentaje_Planos) || 0;
+            const porcentajeTotal = parseInt(producto.Porcentaje_Total) || 0;
+
+            const fila = `
+                <tr>
+                    <td>${producto.Proyecto}</td>
+                    <td>${m2.toFixed(2)}</td>
+                    <td>${mc}</td>
+                    <td>${pagPorM2.toFixed(2)}</td>
+                    <td>${costoMCporM2.toFixed(2)}</td>
+                    <td>${planos}</td>
+                    <td>${planosPorM2.toFixed(2)}</td>
+                    <td>${costoPlanos.toFixed(2)}</td>
+                    <td>${porcentajeMC}%</td>
+                    <td>${porcentajePlanos}%</td>
+                    <td>${porcentajeTotal}%</td>
+                </tr>
+            `;
+            tabla.innerHTML += fila;
+        });
+    } catch (error) {
+        console.error('Error al cargar análisis de producto:', error);
+        alert('No se pudo cargar el análisis de producto. Revisa la consola para más detalles.');
+    }
+}
+
+// Función para cargar las nóminas desde el backend
+async function cargarNominas() {
+    try {
+        const response = await fetch('http://127.0.0.1:5000/nominas');
+        if (!response.ok) {
+            throw new Error(`Error en la respuesta: ${response.status}`);
+        }
+
+        const nominas = await response.json();
+        const tabla = document.querySelector('#tabla-nominas tbody');
+        tabla.innerHTML = '';
+
+        let totalNominas = 0;
+
+        nominas.forEach(nomina => {
+            const sueldoMensual = parseFloat(nomina.sueldo_mensual) || 0;
+            const aguinaldo = sueldoMensual;
+            const totalAnual = sueldoMensual * 13;
+            totalNominas += totalAnual;
+
+            const fila = `
+                <tr>
+                    <td>${nomina.nombre}</td>
+                    <td>${sueldoMensual.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })}</td>
+                    <td>${aguinaldo.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })}</td>
+                    <td>${totalAnual.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' })}</td>
+                    <td>
+                        <button class="delete" onclick="eliminarNomina(${nomina.id})">Eliminar</button>
+                    </td>
+                </tr>
+            `;
+            tabla.innerHTML += fila;
+        });
+
+        document.getElementById('total-nominas').textContent = totalNominas.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
+    } catch (error) {
+        console.error('Error al cargar las nóminas:', error);
+        alert('No se pudieron cargar las nóminas. Revisa la consola para más detalles.');
+    }
+}
+
+async function eliminarNomina(id) {
+    console.log('ID enviado para eliminar:', id); // Debug
+    if (!confirm('¿Estás seguro de que deseas eliminar a este trabajador de la nómina?')) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`http://127.0.0.1:5000/nominas/${id}`, {
+            method: 'DELETE',
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error en la respuesta: ${response.status}`);
+        }
+
+        const resultado = await response.json();
+        alert(resultado.mensaje);
+
+        // Recargar la tabla de nóminas
+        cargarNominas();
+    } catch (error) {
+        console.error('Error al eliminar nómina:', error);
+        alert('No se pudo eliminar al trabajador. Revisa la consola para más detalles.');
+    }
+}
+
+
+
+// Función para guardar una nueva nómina
+async function guardarNomina() {
+    const nombrenominaElement = document.getElementById('nombrenominaInput');
+    const sueldoMensualElement = document.getElementById('sueldo-mensual');
+
+    const nombrenomina = nombrenominaElement.value.trim();
+    const sueldoMensual = parseFloat(sueldoMensualElement.value);
+
+    console.log('Datos enviados:', { nombrenomina, sueldo_mensual: sueldoMensual });
+
+    if (!nombrenomina || isNaN(sueldoMensual) || sueldoMensual <= 0) {
+        alert('Por favor, ingresa un nombre válido y un sueldo mayor a 0.');
+        return;
+    }
+
+    try {
+        const response = await fetch('http://127.0.0.1:5000/nominas', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nombrenomina: nombrenomina, sueldo_mensual: sueldoMensual })
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            alert(`Error al guardar la nómina: ${errorData.error}`);
+            return;
+        }
+
+        alert('Trabajador añadido exitosamente');
+        cargarNominas();
+    } catch (error) {
+        console.error('Error al guardar la nómina:', error);
+        alert('No se pudo añadir al trabajador. Revisa la consola para más detalles.');
+    }
+}
+
+
+
+
+// Función para abrir el formulario de nóminas
+function abrirFormularioNomina() {
+    document.getElementById('formulario-nomina').style.display = 'block';
+}
+
+// Función para cerrar el formulario de nóminas
+function cerrarFormularioNomina() {
+    document.getElementById('formulario-nomina').style.display = 'none';
+    document.getElementById('nombre-trabajador').value = '';
+    document.getElementById('sueldo-mensual').value = '';
+}
+
+// Llama a cargarNominas al inicio
+document.addEventListener('DOMContentLoaded', cargarNominas);
+
+async function calcularPu() {
+    const m2Disenar = parseFloat(document.getElementById('m2-disenar').value);
+    const utilidad = parseFloat(document.getElementById('utilidad').value);
+
+    if (isNaN(m2Disenar) || isNaN(utilidad) || m2Disenar <= 0 || utilidad < 0) {
+        alert('Por favor, ingresa valores válidos.');
+        return;
+    }
+
+    try {
+        const response = await fetch('http://127.0.0.1:5000/analisis-pu', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ m2_disenar: m2Disenar, utilidad: utilidad })
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error en la respuesta: ${response.status}`);
+        }
+
+        const data = await response.json();
+        // Asegúrate de que `data` tenga estas propiedades antes de usarlas
+        document.getElementById('costo-diario').textContent = data.costo_diario?.toFixed(2) || '0.00';
+        document.getElementById('pu-limite').textContent = data.pu_limite?.toFixed(2) || '0.00';
+        document.getElementById('pu-utilidad').textContent = data.pu_utilidad?.toFixed(2) || '0.00';
+        document.getElementById('costo-total').textContent = data.costo_total?.toFixed(2) || '0.00';
+    } catch (error) {
+        console.error('Error al calcular Pu:', error);
+        alert('No se pudo realizar el cálculo. Revisa la consola para más detalles.');
+    }
+}
+
+async function cargarGastos() {
+    try {
+        const response = await fetch('http://127.0.0.1:5000/gastos');
+        if (!response.ok) {
+            throw new Error(`Error en la respuesta: ${response.status}`);
+        }
+
+        const gastos = await response.json();
+        const lista = document.getElementById('lista-gastos');
+        lista.innerHTML = '';
+
+        let totalGastos = 0;
+
+        gastos.forEach(gasto => {
+            totalGastos += parseFloat(gasto.monto);
+
+            // Crear fila con botón de eliminación
+            const fila = `
+                <tr>
+                    <td>${gasto.descripcion}</td>
+                    <td>$${parseFloat(gasto.monto).toFixed(2)}</td>
+                    <td>
+                        <button onclick="eliminarGasto(${gasto.id})">🗑️ Eliminar</button>
+                    </td>
+                </tr>
+            `;
+            lista.innerHTML += fila;
+        });
+
+        document.getElementById('total-gastos').textContent = totalGastos.toFixed(2);
+    } catch (error) {
+        console.error('Error al cargar los gastos:', error);
+    }
+}
+async function eliminarGasto(id) {
+    console.log('ID del gasto a eliminar:', id); // Verifica que el ID sea correcto
+    if (!confirm('¿Estás seguro de que deseas eliminar este gasto?')) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`http://127.0.0.1:5000/gastos/${id}`, {
+            method: 'DELETE',
+        });
+
+        // Manejar respuestas que no sean JSON
+        const contentType = response.headers.get('content-type');
+        if (!response.ok) {
+            if (contentType && contentType.includes('application/json')) {
+                const error = await response.json();
+                alert(`Error al eliminar gasto: ${error.error}`);
+            } else {
+                console.error('Error inesperado:', await response.text());
+                alert('Error inesperado al eliminar el gasto.');
+            }
+            return;
+        }
+
+        // Manejo exitoso
+        alert('Gasto eliminado exitosamente');
+        cargarGastos(); // Recargar la lista de gastos
+    } catch (error) {
+        console.error('Error al eliminar gasto:', error);
+    }
+}
+
+
+
+async function agregarGasto() {
+    const descripcion = document.getElementById('descripcion-gasto').value.trim();
+    const monto = parseFloat(document.getElementById('monto-gasto').value);
+
+    if (!descripcion || isNaN(monto) || monto <= 0) {
+        alert('Por favor, ingresa datos válidos.');
+        return;
+    }
+
+    try {
+        const response = await fetch('http://127.0.0.1:5000/gastos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ descripcion, monto })
+        });
+
+        if (response.ok) {
+            alert('Gasto añadido exitosamente');
+            cargarGastos();
+        } else {
+            const error = await response.json();
+            alert(`Error al añadir gasto: ${error.error}`);
+        }
+    } catch (error) {
+        console.error('Error al añadir gasto:', error);
+        alert('No se pudo añadir el gasto. Revisa la consola para más detalles.');
+    }
+}
+
+async function cargarAnalisisPu() {
+    const tabla = document.getElementById('tabla-analisis-pu');
+    const trabajadorSelect = document.getElementById('trabajador-select'); // Menú desplegable
+    const puLimiteValor = document.getElementById('pu-limite-valor');
+    const puConUtilidadInput = document.getElementById('pu-con-utilidad'); // Valor dinámico del PU con Utilidad
+
+    if (!tabla || !trabajadorSelect || !puLimiteValor) {
+        console.error('No se encontraron los elementos necesarios en el DOM');
+        return;
+    }
+
+    try {
+        const response = await fetch('http://127.0.0.1:5000/analisis-pu');
+        if (!response.ok) {
+            throw new Error(`Error en la respuesta: ${response.status}`);
+        }
+
+        const datos = await response.json();
+        const analisisPu = datos.analisis_pu;
+        const puLimite = datos.pu_limite;
+        document.getElementById('pu-limite-valor').textContent = `$${puLimite.toFixed(2)}`;
+
+        tabla.innerHTML = '';
+        trabajadorSelect.innerHTML = '<option value="">Seleccione un Trabajador</option>';
+
+        analisisPu.forEach(fila => {
+            const gananciaDiaria = fila.ganancia_diaria || 0;
+            const puConUtilidad = parseFloat(puConUtilidadInput.textContent.replace('$', '')) || puLimite;
+            const rendimientoMinimo = puConUtilidad > 0 ? gananciaDiaria / puConUtilidad : 0;
+            const filaHtml = `
+                <tr>
+                    <td>${fila.trabajador}</td>
+                    <td>$${fila.nomina_anual.toFixed(2)}</td>
+                    <td>$${fila.gasto_operacion.toFixed(2)}</td>
+                    <td>$${fila.total_por_persona.toFixed(2)}</td>
+                    <td>$${fila.ganancia_diaria.toFixed(2)}</td>
+                    <td>$${fila.costo_m2_dia.toFixed(2)}</td>
+                    <td>${rendimientoMinimo.toFixed(2)}</td> <!-- Nueva columna -->
+
+                </tr>
+            `;
+            tabla.innerHTML += filaHtml;
+
+            // Agregar el trabajador al menú desplegable
+            const option = document.createElement('option');
+            option.value = JSON.stringify(fila); // Guardar el objeto como string
+            option.textContent = fila.trabajador;
+            trabajadorSelect.appendChild(option);
+        });
+
+        // Mostrar el PU Límite global
+        puLimiteValor.textContent = `$${puLimite.toFixed(2)}`;
+    } catch (error) {
+        console.error('Error al cargar el análisis PU:', error);
+    }
+}
+
+
+
+
+
+
+async function cargarTablaAnalisisPu() {
+    try {
+        // Fetch de datos de nóminas y gastos de operación
+        const nominaResponse = await fetch('http://127.0.0.1:5000/nominas');
+        const gastosResponse = await fetch('http://127.0.0.1:5000/gastos');
+
+        if (!nominaResponse.ok || !gastosResponse.ok) {
+            throw new Error('Error al cargar datos de nóminas o gastos de operación');
+        }
+
+        const nominas = await nominaResponse.json();
+        const gastos = await gastosResponse.json();
+
+        // Suma de gastos de operación
+        const totalGastosOperacion = gastos.reduce((acc, gasto) => acc + parseFloat(gasto.monto), 0);
+
+        // Número de trabajadores
+        const totalTrabajadores = nominas.length;
+
+        // Tabla de análisis PU
+        const tablaPu = document.getElementById('tabla-pu');
+        tablaPu.innerHTML = '';
+
+        nominas.forEach((nomina) => {
+            const nominaAnual = parseFloat(nomina.total_anual);
+            const totalPorPersona = (nominaAnual + totalGastosOperacion / totalTrabajadores).toFixed(2);
+            const gananciaDiaria = (totalPorPersona / 365).toFixed(2);
+
+            const fila = `
+                <tr>
+                    <td>${nomina.nombre}</td>
+                    <td>$${nominaAnual.toFixed(2)}</td>
+                    <td>$${(totalGastosOperacion / totalTrabajadores).toFixed(2)}</td>
+                    <td>$${totalPorPersona}</td>
+                    <td>$${gananciaDiaria}</td>
+                    <td>$${costo_m2_dia}</td>
+                </tr>
+            `;
+            tablaPu.innerHTML += fila;
+        });
+    } catch (error) {
+        console.error('Error al cargar análisis PU:', error);
+        alert('No se pudo cargar el análisis PU. Revisa la consola para más detalles.');
+    }
+}
+
+function calcularUtilidad() {
+    const trabajadorSelect = document.getElementById('trabajador-select');
+    const m2Disenar = parseFloat(document.getElementById('m2-disenar').value);
+
+    const ingresoTotal = document.getElementById('ingreso-total');
+    const costoTrabajador = document.getElementById('costo-trabajador');
+    const utilidadTotal = document.getElementById('utilidad-total');
+
+    if (!trabajadorSelect.value || isNaN(m2Disenar) || m2Disenar <= 0) {
+        alert('Por favor, seleccione un trabajador y una cantidad válida de m².');
+        return;
+    }
+
+    // Obtener los datos del trabajador seleccionado
+    const trabajador = JSON.parse(trabajadorSelect.value);
+    const costoPorDia = trabajador.costo_m2_dia;
+
+    // Cálculos
+    const ingreso = m2Disenar * 50; // Ingreso por m2
+    const costo = m2Disenar * costoPorDia; // Costo por trabajador
+    const utilidad = ingreso - costo; // Utilidad
+
+    // Actualizar resultados
+    ingresoTotal.textContent = `$${ingreso.toFixed(2)}`;
+    costoTrabajador.textContent = `$${costo.toFixed(2)}`;
+    utilidadTotal.textContent = `$${utilidad.toFixed(2)}`;
+}
+function calcularPuConUtilidad() {
+    const utilidad = parseFloat(document.getElementById('utilidad').value);
+    const puLimiteValor = parseFloat(document.getElementById('pu-limite-valor').textContent.replace('$', ''));
+    const puConUtilidadElemento = document.getElementById('pu-con-utilidad');
+
+    // Validar valores ingresados
+    if (isNaN(utilidad) || isNaN(puLimiteValor)) {
+        alert('Por favor, ingresa valores válidos para la utilidad.');
+        return;
+    }
+
+    // Calcular PU con utilidad
+    const puConUtilidad = puLimiteValor * (1 - utilidad / 100);
+
+    // Mostrar el resultado
+    puConUtilidadElemento.textContent = `$${puConUtilidad.toFixed(2)}`;
+
+    actualizarRendimientoMinimo(puConUtilidad);
+
+}
+function actualizarRendimientoMinimo(puConUtilidad) {
+    const filas = document.querySelectorAll('#tabla-analisis-pu tr');
+    
+    filas.forEach((fila, index) => {
+        // Omitir el encabezado
+
+
+        // Obtener los valores necesarios de la fila
+        const gananciaDiaria = parseFloat(fila.cells[4].textContent.replace('$', ''));
+
+        // Calcular el rendimiento mínimo
+        const rendimientoMinimo = puConUtilidad > 0 ? gananciaDiaria / puConUtilidad : 0;
+
+        // Actualizar la celda de Rendimiento Mínimo
+        fila.cells[6].textContent = `${rendimientoMinimo.toFixed(2)} m2/día`;
+    });
+}
+
+async function calcularTiempoEntrega() {
+    const m2 = parseFloat(document.getElementById('cantidad-m2').value);
+    const analista = document.getElementById('select-analista').value;
+    const dibujante = document.getElementById('select-dibujante').value;
+    const fechaInicio = document.getElementById('fecha-inicio').value;
+
+    if (!m2 || !analista || !dibujante || !fechaInicio) {
+        alert('Todos los campos son obligatorios');
+        return;
+    }
+
+    try {
+        const response = await fetch('http://127.0.0.1:5000/calcular-tiempo', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ m2, analista, dibujante, fecha_inicio: fechaInicio }),
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            alert(`Error: ${error.error}`);
+            return;
+        }
+
+        const data = await response.json();
+
+        // Mostrar resultados
+        document.getElementById('resultado-meses').textContent = data.tiempo_estimado.meses;
+        document.getElementById('resultado-semanas').textContent = data.tiempo_estimado.semanas;
+        document.getElementById('resultado-dias').textContent = data.tiempo_estimado.dias;
+        document.getElementById('resultado-fecha-fin').textContent = data.fecha_fin;
+
+        document.getElementById('resultado-calculadora').style.display = 'block';
+    } catch (error) {
+        console.error('Error al calcular tiempo de entrega:', error);
+        alert('No se pudo calcular el tiempo de entrega. Revisa la consola para más detalles.');
+    }
+}
+
+
+async function cargarTrabajadores() {
+    try {
+        const response = await fetch('http://127.0.0.1:5000/trabajadores');
+        if (!response.ok) {
+            throw new Error(`Error en la respuesta: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const trabajadores = data.trabajadores;
+
+        const analistaSelect = document.getElementById('select-analista');
+        const dibujanteSelect = document.getElementById('select-dibujante');
+
+        // Limpiar los selectores
+        analistaSelect.innerHTML = '<option value="" disabled selected>Selecciona un analista</option>';
+        dibujanteSelect.innerHTML = '<option value="" disabled selected>Selecciona un dibujante</option>';
+
+        // Agregar opciones a los selectores
+        trabajadores.forEach(trabajador => {
+            const option = `<option value="${trabajador}">${trabajador}</option>`;
+            analistaSelect.innerHTML += option;
+            dibujanteSelect.innerHTML += option;
+        });
+    } catch (error) {
+        console.error('Error al cargar trabajadores:', error);
+        alert('No se pudieron cargar los trabajadores.');
+    }
+}
+
+// Llamar a cargarTrabajadores al cargar la página
+document.addEventListener('DOMContentLoaded', cargarTrabajadores);
+
+const conceptosCostos = [
+    { concepto: "Diseñadores", unidad: "Día", pu: 915.49 },
+    { concepto: "Memoria de cálculo", unidad: "Páginas", pu: 8.0 },
+    { concepto: "Engargolado", unidad: "Lote", pu: 36.0 },
+    { concepto: "Planos estructurales", unidad: "Planos", pu: 32.0 },
+    { concepto: "Hojas protectoras", unidad: "PZA", pu: 1.0 },
+    { concepto: "Carpeta", unidad: "PZA", pu: 59.0 },
+    { concepto: "USB", unidad: "PZA", pu: 52.0 }
+];
+
+function generarTablaCostos() {
+    const tbody = document.getElementById('tabla-costos-body');
+    tbody.innerHTML = ''; // Limpiar tabla
+
+    conceptosCostos.forEach((concepto, index) => {
+        const fila = document.createElement('tr');
+
+        // Concepto
+        const tdConcepto = document.createElement('td');
+        tdConcepto.textContent = concepto.concepto;
+        fila.appendChild(tdConcepto);
+
+        // Unidad
+        const tdUnidad = document.createElement('td');
+        tdUnidad.textContent = concepto.unidad;
+        fila.appendChild(tdUnidad);
+
+        // Cantidad (editable para algunos)
+        const tdCantidad = document.createElement('td');
+        const inputCantidad = document.createElement('input');
+        inputCantidad.type = 'number';
+        inputCantidad.value = 0;
+        inputCantidad.step = 1;
+        inputCantidad.min = 0;
+        inputCantidad.oninput = actualizarCostos; // Actualizar costos al cambiar
+        inputCantidad.id = `cantidad-${index}`;
+        tdCantidad.appendChild(inputCantidad);
+        fila.appendChild(tdCantidad);
+
+        // PU (Precio Unitario)
+        const tdPu = document.createElement('td');
+        tdPu.textContent = `$${concepto.pu.toFixed(2)}`;
+        fila.appendChild(tdPu);
+
+        // Importe
+        const tdImporte = document.createElement('td');
+        tdImporte.id = `importe-${index}`;
+        tdImporte.textContent = `$0.00`;
+        fila.appendChild(tdImporte);
+
+        tbody.appendChild(fila);
+    });
+}
+
+function actualizarCostos() {
+    const m2 = parseFloat(document.getElementById('m2-input').value) || 0;
+    const utilidad = parseFloat(document.getElementById('utilidad-costos').value) || 0;
+
+    let totalCostos = 0;
+
+    conceptosCostos.forEach((concepto, index) => {
+        const cantidad = parseFloat(document.getElementById(`cantidad-${index}`).value) || 0;
+        const importe = cantidad * concepto.pu;
+
+        // Actualizar importe
+        const tdImporte = document.getElementById(`importe-${index}`);
+        tdImporte.textContent = `$${importe.toFixed(2)}`;
+
+        totalCostos += importe;
+    });
+
+    // Calcular costos directos y totales
+    const m2Directo = m2 > 0 ? totalCostos / m2 : 0;
+    const m2Total = m2Directo * (1 + utilidad / 100);
+    const precioTotal = m2Total * m2;
+
+    
+    // Actualizar totales en la tabla
+    document.getElementById('total-costos').textContent = `$${totalCostos.toFixed(2)}`;
+    document.getElementById('m2-directo').textContent = `$${m2Directo.toFixed(2)}`;
+    document.getElementById('m2-total').textContent = `$${m2Total.toFixed(2)}`;
+    document.getElementById('precio-total').textContent = `$${precioTotal.toFixed(2)}`;
+}
+
+    </script>
+    
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showSection('pantalla-inicio')">Inicio</a></li>
+            <li><a href="#" onclick="showSection('formulario')">Añadir Proyecto</a></li>
+            <li><a href="#" onclick="showSection('tabla')">Proyectos Existentes</a></li>
+            <li><a href="#" onclick="showSection('analisis'); cargarRendimiento()">Análisis de Rendimiento</a></li>
+            <li><a href="#" onclick="showSection('recopilacion')">Recopilación de Proyectos</a></li>
+            <li><a href="#" onclick="showSection('analisis-producto'); cargarAnalisisProducto()">Análisis de Producto</a></li>
+            <li><a href="#" onclick="showSection('nominas'); cargarNominas()">Nóminas</a></li>
+            <li><a href="#" onclick="showSection('gestion-gastos'); cargarGastos()">Gestión de Gastos</a></li>
+            <li><a href="#" onclick="showSection('analisis-pu'); cargarAnalisisPu()">Análisis Pu</a></li>
+            <li><a href="#" onclick="showSection('calculadora-costos')">Calculadora de Costos</a></li>
+
+
+            
+            
+        </ul>
+    </nav>
+
+    <button id="modo-oscuro-toggle" onclick="alternarModoOscuro()">🌙</button>
+
+
+    <div id="pantalla-inicio" class="container active">
+        <h1>Proyectos DEMEX</h1>
+        <div class="button-container">
+            <button onclick="showSection('formulario')">Añadir Proyecto</button>
+            <button onclick="showSection('tabla')">Ver Proyectos Existentes</button>
+
+
+
+
+</div>
+
+        </div>
+    </div>
+
+    <div id="formulario" class="container">
+        <h2>Añadir Proyecto</h2>
+        <form onsubmit="event.preventDefault(); agregarProyecto();">
+            <div class="form-grid">
+                <label>ID: <input id="id" type="number" required></label>
+                <label>Tipo: <input id="tipo" type="text" required></label>
+                <label>Proyecto: <input id="proyecto" type="text" required></label>
+                <label>Mes: <input id="mes" type="text" required></label>
+                <label>M2: <input id="m2" type="number" step="0.01" required></label>
+                <label>Inicio: <input id="inicio" type="date"></label>
+                <label>Fin: <input id="fin" type="date"></label>
+                <label>Analista: <input id="analista" type="text" required></label>
+                <label>Dibujante: <input id="dibujante" type="text" required></label>
+                <label>MC: <input id="mc" type="number" required></label>
+                <label>Planos: <input id="planos" type="number" required></label>
+            </div>
+            <button type="submit">Añadir Proyecto</button>
+        </form>
+        <button onclick="showSection('pantalla-inicio')">Regresar a Inicio</button>
+    </div>
+
+    <div id="formulario-editar" class="container">
+        <h2>Editar Proyecto</h2>
+        <form onsubmit="event.preventDefault(); editarProyecto();">
+            <label>Tipo: <input id="tipo-editar" type="text" required></label>
+            <label>Proyecto: <input id="proyecto-editar" type="text" required></label>
+            <label>Mes: <input id="mes-editar" type="text" required></label>
+            <label>M2: <input id="m2-editar" type="number" step="0.01" required></label>
+            <label>Inicio: <input id="inicio-editar" type="date"></label>
+            <label>Fin: <input id="fin-editar" type="date"></label>
+            <label>Analista: <input id="analista-editar" type="text" required></label>
+            <label>Dibujante: <input id="dibujante-editar" type="text" required></label>
+            <label>MC: <input id="mc-editar" type="number" required></label>
+            <label>Planos: <input id="planos-editar" type="number" required></label>
+            <button type="submit">Guardar Cambios</button>
+        </form>
+        <button onclick="showSection('pantalla-inicio')">Regresar a Inicio</button>
+    </div>
+
+    <div id="tabla" class="container">
+        <h2>Proyectos Existentes</h2>
+        <input type="text" id="busqueda" placeholder="Buscar proyectos..." oninput="filtrarProyectos()">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Año</th>
+                    <th>Tipo</th>
+                    <th>Proyecto</th>
+                    <th>Mes</th>
+                    <th>M2</th>
+                    <th>Inicio</th>
+                    <th>Fin</th>
+                    <th>Días</th>
+                    <th>Analista</th>
+                    <th>Dibujante</th>
+                    <th>ND</th>
+                    <th>MC</th>
+                    <th>Planos</th>
+                    <th>Costo MC</th>
+                    <th>Costo Planos</th>
+                    <th>pMC</th>
+                    <th>pPlanos</th>
+                    <th>pTotal</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-proyectos"></tbody>
+        </table>
+        <button onclick="showSection('pantalla-inicio')">Regresar a Inicio</button>
+        <button onclick="exportarExcel()">Exportar a Excel</button>
+    </div>
+
+    <script>obtenerProyectos();</script>
+
+    <div id="analisis" class="container">
+        <h2>Análisis de Rendimiento</h2>
+        <canvas id="grafica-rendimiento" width="800" height="400"></canvas>
+        <button onclick="showSection('pantalla-inicio')">Regresar a Inicio</button>
+        
+    </div>
+    <div id="detalle-trabajador" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarDetalle()">&times;</span>
+            <h2 id="titulo-trabajador">Detalle del Trabajador</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Proyecto</th>
+                        <th>Días</th>
+                        <th>M2</th>
+                        <th>Rendimiento (M2/Día)</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-detalle"></tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div id="recopilacion" class="container" style="display: none;">
+        <h2>Recopilación de Proyectos</h2>
+        <label for="nombre-trabajador">Trabajador:</label>
+        <input type="text" id="nombre-trabajador" placeholder="Nombre de Analista">
+        <button onclick="buscarProyectos()">Buscar</button>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Proyecto</th>
+                    <th>Días</th>
+                    <th>M2</th>
+                    <th>Rendimiento (M2/Día)</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-recopilacion"></tbody>
+        </table>
+        <h3> <span id="porcentaje-efectividad">0.00%</span></h3>
+        <button onclick="showSection('pantalla-inicio')">Regresar a Inicio</button>
+    </div>
+    <div id="analisis-pu" class="container">
+        <h2>Análisis Pu</h2>
+        <h3>Resumen del Análisis PU</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Trabajador</th>
+                    <th>Nómina Anual</th>
+                    <th>Gastos de Operación</th>
+                    <th>Total por Persona</th>
+                    <th>Ganancia Diaria</th>
+                    <th>Costo M2/Día</th>
+                    <th>Rendimiento Mínimo</th> <!-- Nueva columna -->
+
+                </tr>
+            </thead>
+            <tbody id="tabla-analisis-pu"></tbody>
+        </table>
+
+        <div id="pu-limite-global" style="margin-top: 20px;">
+            <h3>PU Límite Global: <span id="pu-limite-valor">$0.00</span></h3>
+        </div>
+        <form onsubmit="event.preventDefault(); calcularPuConUtilidad();">
+            <!-- Entrada de utilidad -->
+            <label>Utilidad (%):
+                <input id="utilidad" type="number" step="1" value="0" required>
+            </label>
+    
+            <!-- Botón para calcular -->
+            <button type="submit">Calcular PU con Utilidad</button>
+        </form>
+    
+        <h3>Resultados</h3>
+        <p>PU con Utilidad: <span id="pu-con-utilidad">0.00</span></p>
+
+        <form onsubmit="event.preventDefault(); calcularUtilidad();">
+            <!-- Selección del trabajador -->
+            <label>Seleccionar Trabajador:
+                <select id="trabajador-select" required>
+                    <option value="">Seleccione un Trabajador</option>
+                </select>
+            </label>
+    
+            <!-- Entrada de m² -->
+            <label>M2 a Diseñar:
+                <input id="m2-disenar" type="number" required>
+            </label>
+    
+            <!-- Botón para calcular -->
+            <button type="submit">Calcular</button>
+    
+            <!-- Mostrar resultados -->
+            <h3>Resultados</h3>
+            <p>Ingreso por M2: <span id="ingreso-total">0.00</span></p>
+            <p>Costo por Trabajador: <span id="costo-trabajador">0.00</span></p>
+            <p>Utilidad: <span id="utilidad-total">0.00</span></p>
+        </form>
+    
+        <button onclick="showSection('pantalla-inicio')">Regresar a Inicio</button>
+    </div>
+
+<div id="wrapper-costos">
+    <div id="calculadora-costos" class="container">
+        <h2>Calculadora de Costos</h2>
+        <form onsubmit="event.preventDefault(); calcularTiempoEntrega();">
+            <label for="cantidad-m2">Cantidad de M²:</label>
+            <input id="cantidad-m2" type="number" required>
+            
+            <label for="select-analista">Analista:</label>
+            <select id="select-analista" required>
+                <option value="" disabled selected>Selecciona un analista</option>
+            </select>
+            
+            <label for="select-dibujante">Dibujante:</label>
+            <select id="select-dibujante" required>
+                <option value="" disabled selected>Selecciona un dibujante</option>
+            </select>
+            
+            <label for="fecha-inicio">Fecha de Inicio:</label>
+            <input id="fecha-inicio" type="date" required>
+            
+            <button type="submit">Calcular</button>
+        </form>
+        <div id="resultado-calculadora" style="margin-top: 20px; display: none;">
+            <h3>Tiempo Estimado</h3>
+            <p>Meses: <span id="resultado-meses">0</span></p>
+            <p>Semanas: <span id="resultado-semanas">0</span></p>
+            <p>Días: <span id="resultado-dias">0</span></p>
+            <h3>Fecha Estimada de Finalización</h3>
+            <p><span id="resultado-fecha-fin">N/A</span></p>
+        </div>
+    </div>
+    
+    <div id="tabla-costos-container" class="container">
+        <h2>Costos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Concepto</th>
+                    <th>Unidad</th>
+                    <th>Cantidad</th>
+                    <th>PU</th>
+                    <th>Importe</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-costos-body">
+                <!-- Las filas se generan dinámicamente -->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" style="text-align: right;">TOTAL:</td>
+                    <td id="total-costos">$0.00</td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: right;">$/M2 Directo:</td>
+                    <td id="m2-directo">$0.00</td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: right;">$/M2 TOTAL:</td>
+                    <td id="m2-total">$0.00</td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: right;">PRECIO TOTAL:</td>
+                    <td id="precio-total">$0.00</td>
+                </tr>
+            </tfoot>
+        </table>
+        <label for="utilidad-costos">Utilidad (%):</label>
+        <input id="utilidad-costos" type="number" value="0" step="1" oninput="actualizarCostos()">
+    </div>
+</div>
+
+
+    
+    <div id="gestion-gastos" class="container">
+        <h2>Gestión de Gastos</h2>
+        <form onsubmit="event.preventDefault(); agregarGasto();">
+            <label>Descripción: <input id="descripcion-gasto" type="text" required></label>
+            <label>Monto: <input id="monto-gasto" type="number" step="0.01" required></label>
+            <th>Acciones</th> <!-- Nueva columna -->
+            <button type="submit">Añadir Gasto</button>
+        </form>
+            <h3>Gastos Totales: $<span id="total-gastos">0.00</span></h3>
+            <ul id="lista-gastos"></ul>
+            <button onclick="showSection('pantalla-inicio')">Regresar a Inicio</button>
+        </div>
+
+    <div id="analisis-producto" class="container">
+        <h2>Análisis de Producto</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Proyecto</th>
+                    <th>M2</th>
+                    <th>MC</th>
+                    <th>Pág/M2</th>
+                    <th>Costo/M2</th>
+                    <th>Planos</th>
+                    <th>Planos/M2</th>
+                    <th>Costo Planos</th>
+                    <th>% MC</th>
+                    <th>% Planos</th>
+                    <th>% Total</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-analisis-producto"></tbody>
+        </table>
+        <button onclick="showSection('pantalla-inicio')">Regresar a Inicio</button>
+    </div>
+
+    <div id="nominas" class="container">
+        <h2>Gestión de Nóminas</h2>
+        <table id="tabla-nominas">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Sueldo Mensual</th>
+                    <th>Aguinaldo</th>
+                    <th>Total Anual</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <h3>Total de Nóminas: <span id="total-nominas">0</span></h3>
+        <button onclick="abrirFormularioNomina()">Añadir Trabajador</button>
+    
+        <div id="formulario-nomina" style="display:none;">
+            <h3>Añadir Trabajador</h3>
+            <label>Nombre: <input id="nombrenominaInput" type="text" required></label>
+            <label>Sueldo Mensual: <input id="sueldo-mensual" type="number" step="0.01" required></label>
+            <button onclick="guardarNomina()">Guardar</button>
+            <button onclick="cerrarFormularioNomina()">Cancelar</button>
+        </div>
+        
+
+        
+
+</body>
+</html>
+
